@@ -58,7 +58,7 @@ class Team(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.name.email
     
 
 class ContactUs(models.Model):

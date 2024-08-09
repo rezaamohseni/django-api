@@ -25,25 +25,18 @@ class Blog(models.Model):
     category = models.ManyToManyField(Category)
     published_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='blog' , default='default.jpg')
+    image_publisher = models.ImageField(upload_to='blog' , default='default.jpg')
+    comments = models.ManyToManyField(Comment)
+    content = models.TextField()
+    descreption = models.TextField()
+
+
 
     def __str__(self):
         return self.title
     
 
 
-class BlogDetail(models.Model):
-    title = models.CharField(max_length=200)
-    publisher = models.ForeignKey(Team , on_delete=models.CASCADE)
-    category = models.ManyToManyField(Category)
-    published_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='blog' , default='default.jpg')
-    image_publisher = models.ImageField(upload_to='blog' , default='default.jpg')
-    comments = models.ManyToManyField(Comment)
-    content = models.TextField()
-    descreption = models.TextField()
-
-    def __str__(self):
-        return self.title
     
 class BlogTag(models.Model):
     title = models.CharField(max_length=100)

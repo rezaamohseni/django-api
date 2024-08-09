@@ -28,7 +28,7 @@ class BlogApiViewSet(viewsets.ModelViewSet):
         return Category.objects.all()
     
 class BlogDetailApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = BlogDetailserializer
     def get_queryset(self):
         return Category.objects.all()

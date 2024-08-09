@@ -18,14 +18,14 @@ class Blogserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = [ 'title' , 'publisher' , 'category']
+        fields = [ 'title' , 'publisher' ]
 
 
 class BlogDetailserializer(serializers.ModelSerializer):
 
     class Meta:
-        model = BlogDetail
-        fields = [ 'title' , 'publisher' , 'category' , 'comments' , 'content' , 'description']
+        model = Blog
+        fields = [ 'title' , 'publisher' , 'category' , 'comments' , 'content' , 'descreption']
 
 class BlogTagserializer(serializers.ModelSerializer):
 
