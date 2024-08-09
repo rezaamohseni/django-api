@@ -8,7 +8,7 @@ from rest_framework import viewsets
 
 
 class CategoryApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Categoryserializer
     def get_queryset(self):
         return Category.objects.all()
@@ -22,7 +22,7 @@ class CommentApiViewSet(viewsets.ModelViewSet):
     
 
 class BlogApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Blogserializer
     def get_queryset(self):
         return Category.objects.all()
