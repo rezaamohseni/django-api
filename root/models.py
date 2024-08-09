@@ -53,12 +53,12 @@ class Team(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     facebook = models.CharField(max_length=100)
-    Twitter = models.CharField(max_length=100)
-    linkdin = models.CharField(max_length=100)
+    twitter = models.CharField(max_length=100)
+    linkedin = models.CharField(max_length=100)
 
 
     def __str__(self):
-        return self.name    
+        return self.name
     
 
 class ContactUs(models.Model):
