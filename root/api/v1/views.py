@@ -9,39 +9,37 @@ from rest_framework import viewsets
 
 
 class ServiceApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Serviceserializer
     def get_queryset(self):
         return Service.objects.all()
 
 class SpecialServiceApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
-    lookup_field = 'id'
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = SpecialServiceserializer
     def get_queryset(self):
         return SpecialService.objects.all()
     
 class TeamApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Teamserializer
     def get_queryset(self):
         return Team.objects.all()
     
     
 class TestimonialsApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Testimonialserializer
     def get_queryset(self):
         return Testimonial.objects.all()
     
 class ContactUsApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
     serializer_class = ContactUsserializer
     def get_queryset(self):
         return ContactUs.objects.all()
     
 class SkillApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAdminUser]
+    permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Skillserializer
     def get_queryset(self):
         return Skill.objects.all()

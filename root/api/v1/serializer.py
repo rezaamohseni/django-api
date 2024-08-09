@@ -35,4 +35,4 @@ class ContactUsserializer(serializers.ModelSerializer):
 
     class Meta:
         model = ContactUs
-        fields = [ 'title' ]
+        fields = [ 'name' ]
