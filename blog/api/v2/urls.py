@@ -6,7 +6,7 @@ app_name = 'api_blog'
 urlpatterns = [
     path('blog', BlogApiViewSet.as_view(), name='blog'),
 
-    path('blog/<int:id>' , BlogDetailView.as_view(), name='blog-detail'),
+    path('blog/<int:pk>' , BlogDetailView.as_view(), name='blog-detail'),
 
     path('category' ,  CategoryApiViewSet.as_view({'get':'list' , 'post':'create'}), name='category'),
 
