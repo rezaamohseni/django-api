@@ -35,6 +35,8 @@ class Blog(models.Model):
     content = models.TextField()
     description = models.TextField()
     image_publisher = models.ImageField(upload_to='blog' , default='default.jpg')
+    status = models.BooleanField(default=True)
+
 
     def __str__(self):
         return self.title
