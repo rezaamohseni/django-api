@@ -18,13 +18,13 @@ class Blogserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = [ 'title' , 'content','description']
+        fields = [ 'title' , 'content','description', 'status'] 
 
 class BlogDetailserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = [ 'title', 'content','description']
+        fields = [ 'title', 'content','description' , 'status']
 
 class BlogTagserializer(serializers.ModelSerializer):
 

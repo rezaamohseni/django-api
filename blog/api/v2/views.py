@@ -1,8 +1,5 @@
-from rest_framework.decorators import api_view , permission_classes
-from rest_framework.response import Response
 from blog.models import *
 from .serializer import *
-from rest_framework import status
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework import viewsets
 from rest_framework.generics import GenericAPIView
@@ -16,19 +13,32 @@ class CategoryApiViewSet(viewsets.ModelViewSet):
         return Category.objects.all()
     
 
-class CommentApiViewSet(viewsets.ModelViewSet):
-    # lookup_field='id'
-    permission_classes=[IsAuthenticatedOrReadOnly]
-    serializer_class = Commentserializer
-    def get_queryset(self):
-        return Category.objects.all()
+# class CommentApiViewSet(viewsets.ModelViewSet):
+#     # lookup_field='id'
+#     permission_classes=[IsAuthenticatedOrReadOnly]
+#     serializer_class = Commentserializer
+#     def get_queryset(self):
+#         return Comment.objects.all()
     
 
-class BlogApiViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAuthenticatedOrReadOnly]
+
+class BlogApiViewSet(GenericAPIView, ListModelMixin, CreateModelMixin):   
     serializer_class = Blogserializer
     def get_queryset(self):
-        return Category.objects.all()
+        return Blog.objects.filter(status=True)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+# class BlogApiViewSet(viewsets.ModelViewSet):
+#     permission_classes=[IsAuthenticatedOrReadOnly]
+#     serializer_class = Blogserializer
+#     def get_queryset(self):
+#         return Category.objects.all()
     
 # class BlogDetailApiViewSet(viewsets.ModelViewSet):
 #     permission_classes=[IsAuthenticatedOrReadOnly]
@@ -36,6 +46,8 @@ class BlogApiViewSet(viewsets.ModelViewSet):
 #     serializer_class = BlogDetailserializer
 #     def get_queryset(self):
 #         return Category.objects.filter(id=id)
+
+
 class BlogDetailView(GenericAPIView , RetrieveModelMixin , DestroyModelMixin , UpdateModelMixin):
     permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = BlogDetailserializer
@@ -56,5 +68,5 @@ class BlogTagApiViewSet(viewsets.ModelViewSet):
     permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = BlogTagserializer
     def get_queryset(self):
-        return Category.objects.all()
+        return BlogTag.objects.all()
     
