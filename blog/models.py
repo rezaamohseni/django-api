@@ -25,6 +25,10 @@ class Blog(models.Model):
     category = models.ManyToManyField(Category)
     published_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='blog' , default='default.jpg')
+    comments = models.ManyToManyField(Comment)
+    content = models.TextField()
+    description = models.TextField()
+    image_publisher = models.ImageField(upload_to='blog' , default='default.jpg')
 
     def __str__(self):
         return self.title
@@ -40,7 +44,7 @@ class BlogDetail(models.Model):
     image_publisher = models.ImageField(upload_to='blog' , default='default.jpg')
     comments = models.ManyToManyField(Comment)
     content = models.TextField()
-    descreption = models.TextField()
+    description = models.TextField()
 
     def __str__(self):
         return self.title

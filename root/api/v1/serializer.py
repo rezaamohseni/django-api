@@ -11,7 +11,7 @@ class Serviceserializer(serializers.ModelSerializer):
         fields = [ 'title' ]
 
 
-class ServiceDetailserializer(serializers.ModelSerializer):
+class SpecialServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SpecialService
@@ -40,3 +40,11 @@ class Skillserializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
         fields = [ 'title' ]
+
+
+class ContactUsserializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ContactUs
+        fields = [ 'name' , 'email' , 'subject' , 'message' ]
+
