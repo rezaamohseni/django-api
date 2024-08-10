@@ -4,9 +4,9 @@ User = get_user_model()
 
 class SpecialService(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(null=False , blank=False)
     image = models.ImageField(upload_to='root' , default='default.jpg')
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -17,7 +17,7 @@ class SpecialService(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='root' , default='default.jpg')
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -25,11 +25,19 @@ class Service(models.Model):
     def __str__(self):
         return self.title
     
+    
+class Skill(models.Model):
+    title = models.CharField(max_length=100)
+    status = models.BooleanField(default=False)
+    def __str__(self):
+        return self.title    
+    
 class Testimonial(models.Model):
-    name = models.ForeignKey(User,  on_delete=models.CASCADE)
-    description = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(null=False , blank=False)
     image = models.ImageField(upload_to='root' , default='default.jpg')
-    status = models.BooleanField(default=True)
+    Skill = models.ManyToManyField(Skill)
+    status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -38,11 +46,6 @@ class Testimonial(models.Model):
         return self.name    
 
 
-class Skill(models.Model):
-    title = models.CharField(max_length=100)
-    status = models.BooleanField(default=True)
-    def __str__(self):
-        return self.title    
 
 
 class Team(models.Model):
@@ -65,8 +68,8 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField() 
     subject = models.CharField(max_length=100)
-    message = models.TextField()
-    status = models.BooleanField(default=True)
+    message = models.TextField(null=False, blank=False)
+    status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

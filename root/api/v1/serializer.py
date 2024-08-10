@@ -23,7 +23,7 @@ class Testimonialserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testimonial
-        fields = [ 'name'  , 'description']
+        fields = [ 'name'  , 'description','status']
 
 class Skillserializer(serializers.ModelSerializer):
 

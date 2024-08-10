@@ -5,30 +5,29 @@ class Categoryserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = [ 'title' ]
+        fields = [ 'title','status']
 
 class Commentserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = [ 'name' , 'message' , 'website' , 'email']
+        fields = ['name','email','message']
 
 
 class Blogserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = [ 'title' , 'publisher' ]
-
+        fields = [ 'title' , 'content','description']
 
 class BlogDetailserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = [ 'title' , 'publisher' , 'category' , 'comments' , 'content' , 'descreption']
+        fields = [ 'title', 'content','description']
 
 class BlogTagserializer(serializers.ModelSerializer):
 
     class Meta:
         model = BlogTag
-        fields = [ 'title']
+        fields = [ 'title' , 'status']

@@ -27,7 +27,7 @@ class TeamApiViewSet(viewsets.ModelViewSet):
         return Team.objects.all()
     
     
-class TestimonialsApiViewSet(viewsets.ModelViewSet):
+class TestimonialApiViewSet(viewsets.ModelViewSet):
     permission_classes=[IsAuthenticatedOrReadOnly]
     serializer_class = Testimonialserializer
     def get_queryset(self):
